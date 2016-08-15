@@ -1,0 +1,19 @@
+<form action="/landmarks/<%=@landmark.id %>/edit" method="post">
+
+<legend>Landmark Name</legend>
+<input type="text" name="landmark[name]" id="name" value="<%=@landmark.name%>">
+
+<legend>Landmark Year Completed</legend>
+<input type="text" name="landmark[year_completed]" id="year_completed" value="<%=@landmark.year_completed.to_s%>">
+
+<legend>Chose Existing Figure</legend>
+
+<%Figure.all.each do |figure|%>
+    <input type="checkbox" name="landmark[figure_id]" value="<%=figure.id%>" id="figure_<%=figure.id%>"><%=figure.name%></input>
+<%end%>
+
+<legend>Make New Figure</legend>
+<input type="text" name="figure[name]" id="new_figure">
+
+<input type="submit" name="Edit Landmark" id="Edit Landmark">
+</form>
